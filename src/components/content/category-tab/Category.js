@@ -1,10 +1,21 @@
 import React, { Component } from "react";
 import Item from "../category-tab/item/Item";
-import {Data} from "./Data";
+import { Data } from "../Data";
 
 class Category extends Component {
   render() {
-    const items = Data();
+    const dis_products = Data("category");
+    let items = [];
+    for (let i = 0; i < dis_products.length; i++) {
+      items[i] = (
+        <Item
+          key={i}
+          image={dis_products[i].image}
+          name={dis_products[i].name}
+          price={dis_products[i].price}
+        />
+      );
+    }
     return (
       <div className="category-tab">
         {/*category-tab*/}
@@ -39,29 +50,19 @@ class Category extends Component {
         </div>
         <div className="tab-content">
           <div className="tab-pane fade active in" id="tshirt">
-            {items.map((item) => (
-              <Item image={item.image} name={item.name} price={item.price} />
-            ))}
+            {items}
           </div>
           <div className="tab-pane fade" id="blazers">
-            {items.map((item) => (
-              <Item image={item.image} name={item.name} price={item.price} />
-            ))}
+            {items}
           </div>
           <div className="tab-pane fade" id="sunglass">
-            {items.map((item) => (
-              <Item image={item.image} name={item.name} price={item.price} />
-            ))}
+            {items}
           </div>
           <div className="tab-pane fade" id="kids">
-            {items.map((item) => (
-              <Item image={item.image} name={item.name} price={item.price} />
-            ))}
+            {items}
           </div>
           <div className="tab-pane fade" id="poloshirt">
-            {items.map((item) => (
-              <Item image={item.image} name={item.name} price={item.price} />
-            ))}
+            {items}
           </div>
         </div>
       </div>
